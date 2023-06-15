@@ -12,7 +12,7 @@ icon_url: "/images/plugins/francois2metz/metabase.svg"
 
 # Metabase + Steampipe
 
-[Mettabase](https://www.metabase.com) provides fast analytics with the friendly UX and integrated tooling to let your company explore data on their own.
+[Metabase](https://www.metabase.com) provides fast analytics with the friendly UX and integrated tooling to let your company explore data on their own.
 
 [Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
 
