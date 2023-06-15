@@ -2,12 +2,9 @@ module github.com/1024pix/steampipe-plugin-metabase
 
 go 1.19
 
-replace github.com/1024pix/go-metabase => ../../metabase/go-metabase
-
 require (
-	github.com/1024pix/go-metabase v0.0.0-00010101000000-000000000000
+	github.com/1024pix/go-metabase v1.0.0
 	github.com/grokify/goauth v0.19.0
-	github.com/grokify/mogo v0.50.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.4.1
 )
 
@@ -17,7 +14,6 @@ require (
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/iam v0.13.0 // indirect
 	cloud.google.com/go/storage v1.29.0 // indirect
-	github.com/1024pix/goauth v0.18.2 // indirect
 	github.com/XiaoMi/pegasus-go-client v0.0.0-20210427083443-f3b6b08bc4c2 // indirect
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d // indirect
 	github.com/agext/levenshtein v1.2.2 // indirect
@@ -56,6 +52,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.10.0 // indirect
 	github.com/grokify/base36 v1.0.5 // indirect
 	github.com/grokify/gocharts/v2 v2.9.1 // indirect
+	github.com/grokify/mogo v0.50.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-getter v1.6.2 // indirect

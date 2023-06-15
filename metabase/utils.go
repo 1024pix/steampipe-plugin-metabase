@@ -22,6 +22,9 @@ func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, err
 	user := os.Getenv("METABASE_USER")
 	password := os.Getenv("METABASE_PASSWORD")
 
+	url := ""
+	tLSSkipVerify := false
+
 	metabaseConfig := GetConfig(d.Connection)
 
 	if metabaseConfig.Token != nil {
@@ -36,6 +39,14 @@ func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, err
 		password = *metabaseConfig.Password
 	}
 
+    if metabaseConfig.Url != nil {
+        url = *metabaseConfig.Url
+    }
+
+    if metabaseConfig.TlsSkipVerify != nil {
+        tLSSkipVerify = *metabaseConfig.TlsSkipVerify
+    }
+
 	if len(token) == 0 && len(user) == 0 && len(password) == 0 {
 		return nil, errors.New("'token' or 'user/password' must be set in the connection configuration. Edit your connection configuration file or set the METABASE_TOKEN or METABASE_USER/METABASE_PASSWORD environment variable and then restart Steampipe")
 	} else if len(token) == 0 &&
@@ -47,11 +58,11 @@ func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, err
 	}
 
 	config := goauth.Config{
-		BaseURL:       *metabaseConfig.Url,
+		BaseURL:       url,
 		SessionID:     token,
 		Username:      user,
 		Password:      password,
-		TLSSkipVerify: *metabaseConfig.TlsSkipVerify,
+		TLSSkipVerify: tLSSkipVerify,
 	}
 
 	client, _, err := metabaseutil.NewApiClient(config)

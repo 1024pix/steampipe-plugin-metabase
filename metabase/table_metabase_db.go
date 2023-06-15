@@ -62,7 +62,6 @@ func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 	}
 
 	for _, db := range dbList.Data {
-		plugin.Logger(ctx).Debug("metabase_db.listDatabase", fmt.Sprintf("%+v\n", db))
 		d.StreamListItem(ctx, db)
 	}
 	return nil, nil

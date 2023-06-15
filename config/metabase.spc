@@ -11,6 +11,6 @@ connection "metabase" {
     # Or token
     # token = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-    # Skip tsl verification
+    # Skip TLS verification
     # tls_skip_verify = true
 }
