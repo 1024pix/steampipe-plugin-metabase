@@ -7,6 +7,8 @@ Use SQL to query [Metabase][].
 - **[Get started →](docs/index.md)**
 - Documentation: [Table definitions & examples](docs/tables)
 
+Compatible with Metabase v0.46.4
+
 ## Quick start
 
 Install the plugin with [Steampipe][]:

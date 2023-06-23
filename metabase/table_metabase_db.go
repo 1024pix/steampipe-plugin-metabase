@@ -42,46 +42,55 @@ func tableMetabaseDb() *plugin.Table {
 
 func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 	client, err := connect(ctx, d)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", "connection_error", err)
 		return nil, err
 	}
 
 	request := client.DatabaseApi.ListDatabases(context.Background())
-	request.IncludeTables(true)
 
 	dbList, resp, err := client.DatabaseApi.ListDatabasesExecute(request)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
 		return nil, err
 	} else if resp.StatusCode >= 300 {
 		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
 		return nil, err
 	}
 
 	for _, db := range dbList.Data {
 		d.StreamListItem(ctx, db)
 	}
+
 	return nil, nil
 }
 
 func getDatabase(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	// client, err := connect(ctx, d)
-	// if err != nil {
-	// 	plugin.Logger(ctx).Error("metabase_db.getDatabase", "connection_error", err)
-	// 	return nil, err
-	// }
-	// quals := d.EqualsQuals
+	client, err := connect(ctx, d)
 
-	// id := quals["id"].GetStringValue()
+	if err != nil {
+		plugin.Logger(ctx).Error("metabase_db.getDatabase", "connection_error", err)
+		return nil, err
+	}
 
-	// result, err := client.AddonShow(ctx, appName, id)
-	// if err != nil {
-	// 	plugin.Logger(ctx).Error("metabase_db.getDatabase", err)
-	// 	return nil, err
-	// }
-	// return result, nil
-	return nil, nil
+	quals := d.EqualsQuals
+	id := quals["id"].GetInt64Value()
+
+	request := client.DatabaseApi.GetDatabase(context.Background(), int32(id))
+
+	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
+
+	if err != nil {
+		plugin.Logger(ctx).Error("metabase_db.getDatabase", err)
+		return nil, err
+	} else if resp.StatusCode >= 300 {
+		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
+		plugin.Logger(ctx).Error("metabase_db.getDatabase", err)
+		return nil, err
+	}
+
+	return db, nil
 }
