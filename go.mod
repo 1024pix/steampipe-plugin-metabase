@@ -3,7 +3,7 @@ module github.com/1024pix/steampipe-plugin-metabase
 go 1.19
 
 require (
-	github.com/1024pix/go-metabase v1.0.0
+	github.com/1024pix/go-metabase v1.1.0
 	github.com/grokify/goauth v0.19.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.4.1
 )
