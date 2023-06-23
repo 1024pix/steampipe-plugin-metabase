@@ -44,7 +44,7 @@ func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 	client, err := connect(ctx, d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", "connection_error", err)
 		return nil, err
 	}
 
@@ -53,11 +53,11 @@ func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 	dbList, resp, err := client.DatabaseApi.ListDatabasesExecute(request)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
 		return nil, err
 	} else if resp.StatusCode >= 300 {
 		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.listDatabase", err)
+		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
 		return nil, err
 	}
 
