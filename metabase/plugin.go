@@ -19,9 +19,10 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			Schema:      ConfigSchema,
 		},
 		TableMap: map[string]*plugin.Table{
-			"metabase_db":         tableMetabaseDb(),
-			"metabase_db_feature": tableMetabaseDbFeature(),
-			"metabase_db_table":   tableMetabaseDbTable(),
+			"metabase_db":               tableMetabaseDb(),
+			"metabase_db_feature":       tableMetabaseDbFeature(),
+			"metabase_db_table":         tableMetabaseDbTable(),
+			"metabase_permission_group": tableMetabaseGroup(),
 		},
 	}
 	return p
