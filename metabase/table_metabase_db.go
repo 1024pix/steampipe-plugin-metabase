@@ -2,7 +2,6 @@ package metabase
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
@@ -41,7 +40,7 @@ func tableMetabaseDb() *plugin.Table {
 }
 
 func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
 		plugin.Logger(ctx).Error("metabase_db.listDatabases", "connection_error", err)
@@ -52,12 +51,9 @@ func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 
 	dbList, resp, err := client.DatabaseApi.ListDatabasesExecute(request)
 
+	err = manageError("metabase_db.listDatabases", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.listDatabases", err)
 		return nil, err
 	}
 
@@ -69,7 +65,7 @@ func listDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 }
 
 func getDatabase(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
 		plugin.Logger(ctx).Error("metabase_db.getDatabase", "connection_error", err)
@@ -83,12 +79,9 @@ func getDatabase(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
+	err = manageError("metabase_db.getDatabase", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getDatabase", err)
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.getDatabase", err)
 		return nil, err
 	}
 

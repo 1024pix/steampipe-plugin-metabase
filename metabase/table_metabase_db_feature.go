@@ -2,7 +2,6 @@ package metabase
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
@@ -20,7 +19,7 @@ func tableMetabaseDbFeature() *plugin.Table {
 		Description: "Features of one database.",
 		List: &plugin.ListConfig{
 			KeyColumns: plugin.AllColumns([]string{"db_id"}),
-			Hydrate:    listDatabaseFeatures,
+			Hydrate:    listDatabaseFeature,
 		},
 
 		Columns: []*plugin.Column{
@@ -30,11 +29,11 @@ func tableMetabaseDbFeature() *plugin.Table {
 	}
 }
 
-func listDatabaseFeatures(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+func listDatabaseFeature(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseFeatures", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db_feature.listDatabaseFeature", "connection_error", err)
 		return nil, err
 	}
 
@@ -45,12 +44,9 @@ func listDatabaseFeatures(ctx context.Context, d *plugin.QueryData, h *plugin.Hy
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
+	err = manageError("metabase_db_feature.listDatabaseFeature", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseFeatures", err)
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseFeatures", err)
 		return nil, err
 	}
 

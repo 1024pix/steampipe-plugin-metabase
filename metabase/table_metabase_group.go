@@ -2,7 +2,6 @@ package metabase
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
@@ -22,7 +21,7 @@ func tableMetabaseGroup() *plugin.Table {
 		},
 		Columns: []*plugin.Column{
 			// Key column cannot be a pointer. Transform helps us to manage them
-			{Name: "id", Type: proto.ColumnType_INT, Transform: transform.FromField("Id"), Description: "ID of groud."},
+			{Name: "id", Type: proto.ColumnType_INT, Transform: transform.FromField("Id"), Description: "ID of group."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of group"},
 			{Name: "member_count", Type: proto.ColumnType_STRING, Description: "Number of member."},
 		},
@@ -30,10 +29,10 @@ func tableMetabaseGroup() *plugin.Table {
 }
 
 func listPermissionGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listPermissionGroup", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_permission_group.listPermissionGroup", "connection_error", err)
 		return nil, err
 	}
 
@@ -41,15 +40,9 @@ func listPermissionGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 
 	permissions, resp, err := client.PermissionsApi.GetPermissionsGroupExecute(request)
 
+	err = manageError("metabase_permission_group.listPermissionGroup", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listPermissionGroup", err)
-
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Debug("metabase_db.listPermissionGroup", "http-response", resp)
-		plugin.Logger(ctx).Error("metabase_db.listPermissionGroup", err)
-
 		return nil, err
 	}
 
@@ -61,10 +54,10 @@ func listPermissionGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 }
 
 func getPermissionGroup(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getPermissionGroup", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_permission_group.getPermissionGroup", "connection_error", err)
 		return nil, err
 	}
 
@@ -75,12 +68,9 @@ func getPermissionGroup(ctx context.Context, d *plugin.QueryData, h *plugin.Hydr
 
 	permissions, resp, err := client.PermissionsApi.GetPermissionsGroupExecute(request)
 
+	err = manageError("metabase_permission_group.getPermissionGroup", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getPermissionGroup", err)
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.getPermissionGroup", err)
 		return nil, err
 	}
 
