@@ -2,7 +2,6 @@ package metabase
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
@@ -41,10 +40,10 @@ func tableMetabaseDbTable() *plugin.Table {
 }
 
 func listDatabaseTable(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabaseTables", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db_table.listDatabaseTable", "connection_error", err)
 		return nil, err
 	}
 
@@ -56,15 +55,9 @@ func listDatabaseTable(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
+	err = manageError("metabase_db_table.listDatabaseTable", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.listDatabaseTables", err)
-
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Debug("metabase_db.listDatabaseTables", "http-response", resp)
-		plugin.Logger(ctx).Error("metabase_db.listDatabaseTables", err)
-
 		return nil, err
 	}
 
@@ -76,10 +69,10 @@ func listDatabaseTable(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 }
 
 func getDatabaseTable(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	client, err := connect(ctx, d)
+	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseTables", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db_table.getDatabaseTable", "connection_error", err)
 		return nil, err
 	}
 
@@ -92,12 +85,9 @@ func getDatabaseTable(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrat
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
+	err = manageError("metabase_db_table.getDatabaseTable", ctx, resp, err)
+
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseTables", err)
-		return nil, err
-	} else if resp.StatusCode >= 300 {
-		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Error("metabase_db.getDatabaseTables", err)
 		return nil, err
 	}
 

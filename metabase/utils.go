@@ -3,6 +3,8 @@ package metabase
 import (
 	"context"
 	"errors"
+	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/1024pix/go-metabase/metabase"
@@ -11,7 +13,7 @@ import (
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
-func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, error) {
+func connect(d *plugin.QueryData) (*metabase.APIClient, error) {
 	// get metabase client from cache
 	cacheKey := "metabase"
 	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
@@ -39,13 +41,13 @@ func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, err
 		password = *metabaseConfig.Password
 	}
 
-    if metabaseConfig.Url != nil {
-        url = *metabaseConfig.Url
-    }
+	if metabaseConfig.Url != nil {
+		url = *metabaseConfig.Url
+	}
 
-    if metabaseConfig.TlsSkipVerify != nil {
-        tLSSkipVerify = *metabaseConfig.TlsSkipVerify
-    }
+	if metabaseConfig.TlsSkipVerify != nil {
+		tLSSkipVerify = *metabaseConfig.TlsSkipVerify
+	}
 
 	if len(token) == 0 && len(user) == 0 && len(password) == 0 {
 		return nil, errors.New("'token' or 'user/password' must be set in the connection configuration. Edit your connection configuration file or set the METABASE_TOKEN or METABASE_USER/METABASE_PASSWORD environment variable and then restart Steampipe")
@@ -75,4 +77,20 @@ func connect(ctx context.Context, d *plugin.QueryData) (*metabase.APIClient, err
 	d.ConnectionManager.Cache.Set(cacheKey, client)
 
 	return client, nil
+}
+
+func manageError(methodCallStack string, ctx context.Context, resp *http.Response, err error) error {
+	if err != nil {
+		plugin.Logger(ctx).Error("metabase_db_xxx.manageError", err)
+
+		return err
+	} else if resp.StatusCode >= 300 {
+		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
+		plugin.Logger(ctx).Debug(fmt.Sprintf("%s.manageError", methodCallStack), "http-response", resp)
+		plugin.Logger(ctx).Error(fmt.Sprintf("%s.manageError", methodCallStack), err)
+
+		return err
+	}
+
+	return nil
 }
