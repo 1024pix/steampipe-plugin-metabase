@@ -24,17 +24,16 @@ func tableMetabaseDbTable() *plugin.Table {
 			// Key column cannot be a pointer. Transform helps us to manage them
 			{Name: "id", Type: proto.ColumnType_INT, Transform: transform.FromField("Id"), Description: "ID of table."},
 			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of database."},
-			{Name: "entity_type", Type: proto.ColumnType_STRING, Description: "???"},
 			{Name: "schema", Type: proto.ColumnType_STRING, Description: "Database schema."},
 			{Name: "show_in_getting_started", Type: proto.ColumnType_BOOL, Description: "If table is show on start."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of table."},
 			{Name: "description", Type: proto.ColumnType_STRING, Description: "Description of table."},
-			{Name: "caveats", Type: proto.ColumnType_STRING, Description: "???"},
+			{Name: "caveats", Type: proto.ColumnType_STRING, Description: "Warning about this table."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "When table was created in Metabase."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "When table was updated in Metabase."},
-			{Name: "visibility_type", Type: proto.ColumnType_STRING, Description: "???"},
+			{Name: "visibility_type", Type: proto.ColumnType_STRING, Description: "If table is searchable or hidden."},
 			{Name: "display_name", Type: proto.ColumnType_STRING, Description: "Display name of table."},
-			{Name: "points_of_interest", Type: proto.ColumnType_STRING, Description: "???"},
+			{Name: "points_of_interest", Type: proto.ColumnType_STRING, Description: "Description of why this table is interest."},
 		},
 	}
 }

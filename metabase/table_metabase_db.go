@@ -23,18 +23,16 @@ func tableMetabaseDb() *plugin.Table {
 			{Name: "id", Type: proto.ColumnType_INT, Transform: transform.FromField("Id"), Description: "ID of database."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of database."},
 			{Name: "description", Type: proto.ColumnType_STRING, Description: "Description of database."},
-			//Features                 []string `json:"features,omitempty"`
 			{Name: "is_full_sync", Type: proto.ColumnType_BOOL, Description: "Is fully synchronize."},
 			{Name: "is_sample", Type: proto.ColumnType_BOOL, Description: "Is database is sample."},
 			{Name: "cache_field_values_schedule", Type: proto.ColumnType_STRING, Description: "Cache field."},
 			{Name: "metadata_sync_schedule", Type: proto.ColumnType_STRING, Description: "Synchroniez schedule value."},
-			{Name: "caveats", Type: proto.ColumnType_STRING, Description: "???."},
+			{Name: "caveats", Type: proto.ColumnType_STRING, Description: "Warning about this table."},
 			{Name: "engine", Type: proto.ColumnType_STRING, Description: "Engine of database."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "When database was created in Metabase."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "When database was updated in Metabase."},
-			{Name: "native_permissions", Type: proto.ColumnType_STRING, Description: "????."},
-			{Name: "points_of_interest", Type: proto.ColumnType_STRING, Description: "????."},
-			//Tables           []DatabaseTable  `json:"tables,omitempty"`
+			{Name: "native_permissions", Type: proto.ColumnType_STRING, Description: "Ability to write native/SQL."},
+			{Name: "points_of_interest", Type: proto.ColumnType_STRING, Description: "Description of why this table is interest."},
 		},
 	}
 }

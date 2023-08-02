@@ -1,14 +1,9 @@
 # Table: metabase_permission_download
 
-List download permission of Metabase.
+List download permission of Metabase for getting download data from database.
 
-## Examples
+No field required.
 
-### List all permissions
+`metabase_permission_download` has same data structur that `metabase_permission_data`.
 
-```sql
-select
-  *
-from
-  metabase_permission_download;
-```
+Please `metabase_permission_data` for more informations.
