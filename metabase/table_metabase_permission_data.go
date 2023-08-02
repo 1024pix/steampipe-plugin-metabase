@@ -20,8 +20,8 @@ const (
 
 var SubPermissionColum = []*plugin.Column{
 	// Key column cannot be a pointer. Transform helps us to manage them
-	{Name: "group_id", Type: proto.ColumnType_INT, Transform: transform.FromField("GroupId"), Description: "ID of group."},
-	{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of database"},
+	{Name: "group_id", Type: proto.ColumnType_INT, Transform: transform.FromField("GroupId"), Description: "ID of the group."},
+	{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
 	{Name: "schema_name", Type: proto.ColumnType_STRING, Transform: transform.FromField("SchemaName"), Description: "Name of schema."},
 	{Name: "table_id", Type: proto.ColumnType_INT, Transform: transform.FromField("TableId"), Description: "Table id."},
 	{Name: "level_access", Type: proto.ColumnType_STRING, Transform: transform.FromField("LevelAccess"), Description: "Level access of table."},

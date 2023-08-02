@@ -29,8 +29,8 @@ func tableMetabasePermission() *plugin.Table {
 		},
 		Columns: []*plugin.Column{
 			// Key column cannot be a pointer. Transform helps us to manage them
-			{Name: "group_id", Type: proto.ColumnType_INT, Transform: transform.FromField("GroupId"), Description: "ID of group."},
-			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of database"},
+			{Name: "group_id", Type: proto.ColumnType_INT, Transform: transform.FromField("GroupId"), Description: "ID of the group."},
+			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
 			{Name: "download_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadNative"), Description: "Type of download."},
 			{Name: "download_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadSchema"), Description: "Schema that you can download."},
 			{Name: "data_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataNative"), Description: "Type of data."},
