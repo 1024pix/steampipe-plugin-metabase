@@ -12,7 +12,7 @@ import (
 )
 
 type Permission struct {
-	GroupId        int
+	GroupID        int
 	DbId           int
 	DownloadNative *string
 	DownloadSchema *string
@@ -28,8 +28,7 @@ func tableMetabasePermission() *plugin.Table {
 			Hydrate: listPermission,
 		},
 		Columns: []*plugin.Column{
-			// Key column cannot be a pointer. Transform helps us to manage them
-			{Name: "group_id", Type: proto.ColumnType_INT, Transform: transform.FromField("GroupId"), Description: "ID of the group."},
+			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
 			{Name: "download_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadNative"), Description: "Type of download."},
 			{Name: "download_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadSchema"), Description: "Schema that you can download."},
@@ -103,7 +102,7 @@ func createPermission(methodCallStack string, ctx context.Context, groups *map[s
 			dataNative, dataSchema := extractNativeAndSchemas(data.Data)
 
 			permissions = append(permissions, Permission{
-				GroupId:        gId,
+				GroupID:        gId,
 				DbId:           dId,
 				DownloadNative: downloadNative,
 				DownloadSchema: downloadSchema,
