@@ -19,17 +19,17 @@ icon_url: "/images/plugins/francois2metz/metabase.svg"
 For example:
 
 ```sql
-select
+SELECT
   name,
   description,
   id
-from
-  metabase_db
+FROM
+  metabase_db;
 ```
 
 ```
 +---------------+-------------+-----+
-| name          | Description | id  |
+| name          | description | id  |
 +---------------+-------------+-----+
 | my-database-1 | Test 1      | 17  |
 | my-database-2 | Test 2      | 136 |
@@ -63,39 +63,41 @@ Installing the latest metabase plugin will create a config file (`~/.steampipe/c
 
 ```hcl
 connection "metabase" {
-    plugin = "1024pix/metabase"
+    plugin = "metabase"
 
-    # Your metabase url
-    # url = https://localhost
+    # Your metabase url (requiried)
+    # url = "https://localhost"
 
-    # Metabase credentials
-    # user = my_user
-    # password = my_password
+    # Username/password is required for requests. Required except if token (see after) is provided.
+    # This can also be set via the `METABASE_USER` and `METABASE_PASSWORD` environment variable.
+    # user = "my_user"
+    # password = "my_password"
 
-    # Or token
-    # token = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    # Token is required for requests. Required except if user/password (see before) is provided.
+    # This can also be set via the `METABASE_TOKEN` environment variable.
+    # token = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-    # Skip tsl verification
-    # tls_skip_verify = true
+    # Skip TLS verification, useful in local test. Optionnal.
+    # tls_skip_verify = false
 }
 ```
 
 ### Credentials from Environment Variables
 
-The Metabase plugin will use the following environment variables to obtain credentials **only if other argument (`token` or `user` or `password`) is not specified** in the connection:
+Alternatively, you can also use the standard Metabase environment variables to obtain credentials **only if other arguments (`token` or `user`/`password`) are not specified** in the connection:
 
 ```sh
-export METABASE_TOKEN=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+export METABASE_TOKEN="33d0d62a-6a16-3083-ba7b-3bab31bd6612"
 ```
 
 or
 
 ```sh
-export METABASE_USER=my-user
-export METABASE_PASSWORD=my-password
+export METABASE_USER="my-user"
+export METABASE_PASSWORD="my-password"
 ```
 
-## Get Involved
+## Get involved
 
-* Open source: https://github.com/1024pix/steampipe-plugin-metabase
-
+- Open source: https://github.com/1024pix/steampipe-plugin-metabase
+- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)

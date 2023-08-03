@@ -11,7 +11,7 @@ connection "metabase" {
 
     # Token is required for requests. Required except if user/password (see before) is provided.
     # This can also be set via the `METABASE_TOKEN` environment variable.
-    # token = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    # token = "33d0d62a-6a16-3083-ba7b-3bab31bd6612"
 
     # Skip TLS verification, useful in local test. Optionnal.
     # tls_skip_verify = false
