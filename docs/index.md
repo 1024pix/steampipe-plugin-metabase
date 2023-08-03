@@ -16,7 +16,7 @@ icon_url: "/images/plugins/francois2metz/metabase.svg"
 
 [Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
 
-For example:
+List database in your Metabase instance:
 
 ```sql
 SELECT
