@@ -39,19 +39,19 @@ func tableMetabasePermissionData() *plugin.Table {
 		Name:        "metabase_permission_data",
 		Description: "List of permissions for data in Metabase.",
 		List: &plugin.ListConfig{
-			Hydrate: listPermissionData,
+			Hydrate: listPermissionsData,
 		},
 		Columns: SubPermissionColum,
 	}
 }
 
-func listPermissionData(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	return listSubPermission("listPermissionData", ctx, d, PermissionData)
+func listPermissionsData(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+	return listSubPermissions("listPermissionsData", ctx, d, PermissionData)
 }
 
-func listSubPermission(methodCallStack string, ctx context.Context, d *plugin.QueryData, permissionType PermissionType) (interface{}, error) {
+func listSubPermissions(methodCallStack string, ctx context.Context, d *plugin.QueryData, permissionType PermissionType) (interface{}, error) {
 	client, err := connect(d)
-	methodCallStack = fmt.Sprintf("%s.listSubPermission", methodCallStack)
+	methodCallStack = fmt.Sprintf("%s.listSubPermissions", methodCallStack)
 
 	if err != nil {
 		plugin.Logger(ctx).Error(methodCallStack, "connection_error", err)

@@ -11,12 +11,12 @@ func tableMetabasePermissionDownload() *plugin.Table {
 		Name:        "metabase_permission_download",
 		Description: "List of permissions for download in Metabase.",
 		List: &plugin.ListConfig{
-			Hydrate: listPermissionDownload,
+			Hydrate: listPermissionsDownload,
 		},
 		Columns: SubPermissionColum,
 	}
 }
 
-func listPermissionDownload(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	return listSubPermission("listPermissionDownload", ctx, d, PermissionDownload)
+func listPermissionsDownload(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+	return listSubPermissions("listPermissionsDownload", ctx, d, PermissionDownload)
 }

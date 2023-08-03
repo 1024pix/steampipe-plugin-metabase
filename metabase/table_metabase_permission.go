@@ -25,7 +25,7 @@ func tableMetabasePermission() *plugin.Table {
 		Name:        "metabase_permission",
 		Description: "List of permissions in Metabase.",
 		List: &plugin.ListConfig{
-			Hydrate: listPermission,
+			Hydrate: listPermissions,
 		},
 		Columns: []*plugin.Column{
 			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
@@ -38,11 +38,11 @@ func tableMetabasePermission() *plugin.Table {
 	}
 }
 
-func listPermission(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+func listPermissions(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_permission.listPermission", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_permission.listPermissions", "connection_error", err)
 		return nil, err
 	}
 
@@ -50,13 +50,13 @@ func listPermission(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateD
 
 	permission, resp, err := client.PermissionsApi.GetPermissionsGraphExecute(request)
 
-	err = manageError("metabase_permission.listPermission", ctx, resp, err)
+	err = manageError("metabase_permission.listPermissions", ctx, resp, err)
 
 	if err != nil {
 		return nil, err
 	}
 
-	permissions, err := createPermission("metabase_permission.listPermission", ctx, permission.Groups)
+	permissions, err := createPermission("metabase_permission.listPermissions", ctx, permission.Groups)
 
 	if err == nil {
 		for _, perm := range permissions {

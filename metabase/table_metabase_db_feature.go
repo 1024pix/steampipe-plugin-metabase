@@ -19,7 +19,7 @@ func tableMetabaseDbFeature() *plugin.Table {
 		Description: "Features of one database.",
 		List: &plugin.ListConfig{
 			KeyColumns: plugin.AllColumns([]string{"db_id"}),
-			Hydrate:    listDatabaseFeature,
+			Hydrate:    listDatabaseFeatures,
 		},
 
 		Columns: []*plugin.Column{
@@ -29,11 +29,11 @@ func tableMetabaseDbFeature() *plugin.Table {
 	}
 }
 
-func listDatabaseFeature(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+func listDatabaseFeatures(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db_feature.listDatabaseFeature", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db_feature.listDatabaseFeatures", "connection_error", err)
 		return nil, err
 	}
 
@@ -44,7 +44,7 @@ func listDatabaseFeature(ctx context.Context, d *plugin.QueryData, h *plugin.Hyd
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
-	err = manageError("metabase_db_feature.listDatabaseFeature", ctx, resp, err)
+	err = manageError("metabase_db_feature.listDatabaseFeatures", ctx, resp, err)
 
 	if err != nil {
 		return nil, err

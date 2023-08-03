@@ -14,7 +14,7 @@ func tableMetabaseDbTable() *plugin.Table {
 		Description: "List of tables of databases created in Metabase.",
 		List: &plugin.ListConfig{
 			KeyColumns: plugin.AllColumns([]string{"db_id"}),
-			Hydrate:    listDatabaseTable,
+			Hydrate:    listDatabaseTables,
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: plugin.AllColumns([]string{"id", "db_id"}),
@@ -38,11 +38,11 @@ func tableMetabaseDbTable() *plugin.Table {
 	}
 }
 
-func listDatabaseTable(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+func listDatabaseTables(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_db_table.listDatabaseTable", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_db_table.listDatabaseTables", "connection_error", err)
 		return nil, err
 	}
 
@@ -54,7 +54,7 @@ func listDatabaseTable(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 
 	db, resp, err := client.DatabaseApi.GetDatabaseExecute(request)
 
-	err = manageError("metabase_db_table.listDatabaseTable", ctx, resp, err)
+	err = manageError("metabase_db_table.listDatabaseTables", ctx, resp, err)
 
 	if err != nil {
 		return nil, err

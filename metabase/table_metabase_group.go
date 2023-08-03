@@ -13,7 +13,7 @@ func tableMetabaseGroup() *plugin.Table {
 		Name:        "metabase_permission_group",
 		Description: "List of group created in Metabase.",
 		List: &plugin.ListConfig{
-			Hydrate: listPermissionGroup,
+			Hydrate: listPermissionsGroup,
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: plugin.AllColumns([]string{"id"}),
@@ -28,11 +28,11 @@ func tableMetabaseGroup() *plugin.Table {
 	}
 }
 
-func listPermissionGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+func listPermissionsGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 	client, err := connect(d)
 
 	if err != nil {
-		plugin.Logger(ctx).Error("metabase_permission_group.listPermissionGroup", "connection_error", err)
+		plugin.Logger(ctx).Error("metabase_permission_group.listPermissionsGroup", "connection_error", err)
 		return nil, err
 	}
 
@@ -40,7 +40,7 @@ func listPermissionGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 
 	permissions, resp, err := client.PermissionsApi.GetPermissionsGroupExecute(request)
 
-	err = manageError("metabase_permission_group.listPermissionGroup", ctx, resp, err)
+	err = manageError("metabase_permission_group.listPermissionsGroup", ctx, resp, err)
 
 	if err != nil {
 		return nil, err
