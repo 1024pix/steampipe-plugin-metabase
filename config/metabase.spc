@@ -1,7 +1,7 @@
 connection "metabase" {
     plugin = "1024pix/metabase"
 
-    # Your metabase url (requiried)
+    # Your metabase url (required)
     # url = "https://localhost"
 
     # Username/password is required for requests. Required except if token (see after) is provided.
