@@ -25,7 +25,7 @@ Configure your account details in `~/.steampipe/config/metabase.spc`:
 
 ```hcl
 connection "metabase" {
-  plugin          = "metabase"
+  plugin          = "1024pix/metabase"
 
   url             = "https://localhost"
 
