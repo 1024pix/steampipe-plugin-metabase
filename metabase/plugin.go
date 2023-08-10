@@ -22,6 +22,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"metabase_db":                  tableMetabaseDb(),
 			"metabase_db_feature":          tableMetabaseDbFeature(),
 			"metabase_db_table":            tableMetabaseDbTable(),
+			"metabase_db_detail":           tableMetabaseDbDetail(),
 			"metabase_permission_group":    tableMetabaseGroup(),
 			"metabase_permission":          tableMetabasePermission(),
 			"metabase_permission_data":     tableMetabasePermissionData(),

@@ -40,7 +40,7 @@ Return:
 ...
 | case-sensitivity-string-filter-options | {"connection_name":"metabase"} |
 | inner-join                             | {"connection_name":"metabase"} |
-+-------+----------------------------------------+--------------------------------+
++-------+----------------------------------------+------------------------+
 ```
 
 ### Check if regex is enabled on PostgreSQL database
