@@ -43,7 +43,7 @@ Return:
 +-------+----------------------------------------+--------------------------------+
 ```
 
-### Check if regex is enable on PostgreSQL database
+### Check if regex is enabled on PostgreSQL database
 
 ```sql
 SELECT
