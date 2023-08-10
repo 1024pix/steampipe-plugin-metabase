@@ -16,7 +16,7 @@ Use SQL to query models, completions and more from Metabase.
 Download and install the latest Metabase plugin:
 
 ```bash
-steampipe plugin install metabase
+steampipe plugin install 1024pix/metabase
 ```
 
 Configure your [credentials](https://hub.steampipe.io/plugins/1024pix/metabase#credentials) and [config file](https://hub.steampipe.io/plugins/1024pix/metabase#configuration).
