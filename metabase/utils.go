@@ -13,6 +13,14 @@ import (
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
+type NotFoundError struct {
+	message string
+}
+
+func (m *NotFoundError) Error() string {
+	return m.message
+}
+
 func connect(d *plugin.QueryData) (*metabase.APIClient, error) {
 	// get metabase client from cache
 	cacheKey := "metabase"
@@ -81,13 +89,27 @@ func connect(d *plugin.QueryData) (*metabase.APIClient, error) {
 
 func manageError(methodCallStack string, ctx context.Context, resp *http.Response, err error) error {
 	if err != nil {
-		plugin.Logger(ctx).Error(fmt.Sprintf("%s.manageError", methodCallStack), err)
+		plugin.Logger(ctx).Debug(fmt.Sprintf("%s.manageError:error:", methodCallStack), "http-response", resp)
+
+		if resp.StatusCode == 404 {
+			return &NotFoundError{
+				message: fmt.Sprintf("Ressource not found form %s", methodCallStack),
+			}
+		}
+
+		plugin.Logger(ctx).Error(fmt.Sprintf("%s.manageError:error:", methodCallStack), err)
 
 		return err
+	} else if resp.StatusCode == 404 {
+		plugin.Logger(ctx).Debug(fmt.Sprintf("%s.manageError:error404:", methodCallStack), "http-response", resp)
+
+		return &NotFoundError{
+			message: fmt.Sprintf("Ressource not found form %s", methodCallStack),
+		}
 	} else if resp.StatusCode >= 300 {
 		err = fmt.Errorf("HTTP code = %d", resp.StatusCode)
-		plugin.Logger(ctx).Debug(fmt.Sprintf("%s.manageError", methodCallStack), "http-response", resp)
-		plugin.Logger(ctx).Error(fmt.Sprintf("%s.manageError", methodCallStack), err)
+		plugin.Logger(ctx).Debug(fmt.Sprintf("%s.manageError:errorStatusCode:", methodCallStack), "http-response", resp)
+		plugin.Logger(ctx).Error(fmt.Sprintf("%s.manageError:errorStatusCode:", methodCallStack), err)
 
 		return err
 	}
