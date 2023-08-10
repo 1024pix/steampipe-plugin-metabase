@@ -1,5 +1,5 @@
 connection "metabase" {
-    plugin = "metabase"
+    plugin = "1024pix/metabase"
 
     # Your metabase url (requiried)
     # url = "https://localhost"
