@@ -63,7 +63,7 @@ Installing the latest metabase plugin will create a config file (`~/.steampipe/c
 
 ```hcl
 connection "metabase" {
-    plugin = "metabase"
+    plugin = "1024pix/metabase"
 
     # Your metabase url (requiried)
     # url = "https://localhost"
