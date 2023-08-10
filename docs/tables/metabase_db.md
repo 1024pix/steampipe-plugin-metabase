@@ -62,7 +62,7 @@ WHERE
    engine = 'postgres';
 ```
 
-### List all databases are not fully syncrhonized after a Meatabase crash
+### List all databases are not fully synchronized after a Metabase crash
 
 ```sql
 SELECT
