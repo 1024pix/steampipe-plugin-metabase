@@ -1,6 +1,6 @@
 # Table: metabase_permission_download
 
-List download permission of Metabase for getting download data from database.
+List download permission of Metabase to download data from database.
 
 No field required.
 
