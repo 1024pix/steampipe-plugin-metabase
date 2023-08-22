@@ -28,12 +28,12 @@ func tableMetabasePermission() *plugin.Table {
 			Hydrate: listPermissions,
 		},
 		Columns: []*plugin.Column{
-			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
+			{Name: "data_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataNative"), Description: "Type of data."},
+			{Name: "data_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataSchema"), Description: "Data that you can download."},
 			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
 			{Name: "download_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadNative"), Description: "Type of download."},
 			{Name: "download_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadSchema"), Description: "Schema that you can download."},
-			{Name: "data_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataNative"), Description: "Type of data."},
-			{Name: "data_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataSchema"), Description: "Data that you can download."},
+			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 		},
 	}
 }

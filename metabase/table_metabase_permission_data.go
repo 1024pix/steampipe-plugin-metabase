@@ -19,11 +19,11 @@ const (
 )
 
 var SubPermissionColum = []*plugin.Column{
-	{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 	{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
+	{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
+	{Name: "level_access", Type: proto.ColumnType_STRING, Transform: transform.FromField("LevelAccess"), Description: "Level access of table."},
 	{Name: "schema_name", Type: proto.ColumnType_STRING, Transform: transform.FromField("SchemaName"), Description: "Name of schema."},
 	{Name: "table_id", Type: proto.ColumnType_INT, Description: "Table ID."},
-	{Name: "level_access", Type: proto.ColumnType_STRING, Transform: transform.FromField("LevelAccess"), Description: "Level access of table."},
 }
 
 type PermissionSchema struct {
