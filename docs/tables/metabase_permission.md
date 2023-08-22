@@ -13,31 +13,21 @@ To understand how permision works, you can read official documentation of Metaba
 ### List all permissions
 
 ```sql
-SELECT
+select
   group_id,
   db_id,
   download_native,
   download_schema,
   data_native,
   data_schema
-FROM
+from
   metabase_permission;
-```
-
-Return:
-```
-+----------+-------+-----------------+-----------------+-------------+-------------+--------------------------------+
-| group_id | db_id | download_native | download_schema | data_native | data_schema | _ctx                           |
-+----------+-------+-----------------+-----------------+-------------+-------------+--------------------------------+
-| 4        | 1     | <null>          | <null>          | <null>      | limited     | {"connection_name":"metabase"} |
-| 2        | 5     | full            | full            | write       | all         | {"connection_name":"metabase"} |
-...
 ```
 
 ### Display group name with permission
 
 ```sql
-SELECT
+select
   group_id,
   name,
   db_id,
@@ -45,9 +35,9 @@ SELECT
   download_schema,
   data_native,
   data_schema
-FROM
+from
   metabase_permission
-INNER JOIN metabase_permission_group ON metabase_permission_group.id = metabase_permission.group_id
-ORDER BY
+inner join metabase_permission_group ON metabase_permission_group.id = metabase_permission.group_id
+order by
   group_id;
 ```

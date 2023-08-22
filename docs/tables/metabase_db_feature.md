@@ -13,53 +13,32 @@ In case of we use PostgreSQL database, we want kown all list of features are act
 `feature` column contain the list of activated features.
 
 ```sql
-WITH my_db AS (
-  SELECT
+with my_db as (
+  select
     id,
     name
-  FROM
+  from
     metabase_db
-  WHERE name = 'Test'
+  where name = 'Test'
 )
-SELECT
+select
   feature
-FROM
+from
   metabase_db_feature,
   my_db
-WHERE
+where
   db_id = my_db.id;
-```
-
-Return:
-```
-+----------------------------------------+--------------------------------+
-| feature                                | _ctx                           |
-+----------------------------------------+--------------------------------+
-| actions                                | {"connection_name":"metabase"} |
-| nested-queries                         | {"connection_name":"metabase"} |
-...
-| case-sensitivity-string-filter-options | {"connection_name":"metabase"} |
-| inner-join                             | {"connection_name":"metabase"} |
-+-------+----------------------------------------+------------------------+
 ```
 
 ### Check if regex is enabled on PostgreSQL database
 
 ```sql
-SELECT
+select
   count(*)
-FROM
+from
   metabase_db_feature
-WHERE
+where
   db_id = 15 and
   feature = 'regex';
 ```
 
-Return:
-```
-+-------+
-| count |
-+-------+
-| 1     |
-+-------+
-```

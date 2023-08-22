@@ -11,7 +11,7 @@ No field required.
 ### List all databases
 
 ```sql
-SELECT
+select
   id,
   name,
   description,
@@ -25,72 +25,54 @@ SELECT
   updated_at,
   native_permissions,
   points_of_interest 
-FROM
+from
   metabase_db;
 ```
 
 ### Get one database by name
 
 ```sql
-SELECT
+select
   id
   name,
   description
-FROM
+from
   metabase_db
-WHERE
+where
   name = 'Test';
-```
-
-Return:
-```
-+------+------+-------------+
-| id   | name | description |
-+------+------+-------------+
-| 7    | Test | <null>      |
-+------+------+-------------+
 ```
 
 ### List all database use PostgreSQL
 
 ```sql
-SELECT
+select
   engine
-FROM
+from
   metabase_db
-WHERE
+where
    engine = 'postgres';
 ```
 
 ### List all databases are not fully synchronized after a Metabase crash
 
 ```sql
-SELECT
+select
   name,
   is_full_sync
-FROM
+from
   metabase_db
-WHERE
+where
    is_full_sync = false;
-```
-
-Return:
-```
-+-----------------+--------------+
-| name            | is_full_sync |
-+-----------------+--------------+
-| Test            | false        |
-+-----------------+--------------+
 ```
 
 ### Ensure no database can be use with native SQL
 
 For this, we list all database with `native_permissions` set `write`:
 ```sql
-SELECT
+select
   name
-FROM
+from
   metabase_db
-WHERE
+where
    native_permissions = 'write';
 ```

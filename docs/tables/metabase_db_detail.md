@@ -15,46 +15,19 @@ In case of we use PostgreSQL database, we want kown all list of features are act
 `feature` column contain the list of activated features.
 
 ```sql
-WITH my_db AS (
-  SELECT
+with my_db as (
+  select
     id,
     name
-  FROM
+  from
     metabase_db
-  WHERE name = 'Test'
+  where name = 'Test'
 )
-SELECT
+select
   feature
-FROM
+from
   metabase_db_detail,
   my_db
-WHERE
+where
   db_id = my_db.id;
-```
-
-Return:
-```
-+-------+-----------------------------+----------------------------------------------+--------------------------------+
-| db_id | key                         | value                                        | _ctx                           |
-+-------+-----------------------------+----------------------------------------------+--------------------------------+
-| 7     | ssl-client-cert-source      | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | schema-filters-type         | all                                          | {"connection_name":"metabase"} |
-| 7     | ssl-mode                    | require                                      | {"connection_name":"metabase"} |
-| 7     | ssl-key-creator-id          | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | ssl-key-password-creator-id | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | ssl                         | true                                         | {"connection_name":"metabase"} |
-| 7     | ssl-key-source              | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | port                        | 99999                                        | {"connection_name":"metabase"} |
-| 7     | ssl-use-client-auth         | false                                        | {"connection_name":"metabase"} |
-| 7     | ssl-root-cert-creator-id    | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | ssl-client-cert-creator-id  | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | ssl-root-cert-source        | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | user                        | this_is_user                                 | {"connection_name":"metabase"} |
-| 7     | password                    | **MetabasePass**                             | {"connection_name":"metabase"} |
-| 7     | host                        | my_dp.postgresql.dbs.test.com                | {"connection_name":"metabase"} |
-| 7     | ssl-key-password-source     | <nil>                                        | {"connection_name":"metabase"} |
-| 7     | dbname                      | this_is_my_db                                | {"connection_name":"metabase"} |
-| 7     | tunnel-enabled              | false                                        | {"connection_name":"metabase"} |
-| 7     | advanced-options            | false                                        | {"connection_name":"metabase"} |
-+-------+-----------------------------+----------------------------------------------+--------------------------------+
 ```
