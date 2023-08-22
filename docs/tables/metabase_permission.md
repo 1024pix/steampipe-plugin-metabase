@@ -2,7 +2,7 @@
 
 List all permissions from Metabase.
 
-To understand how permision works, you can read official documentation of Metabase [](https://www.metabase.com/docs/latest/permissions/data).
+To understand how permision works, you can read official documentation of [Metabase](https://www.metabase.com/docs/latest/permissions/data).
 
 `db_id` is the database id from `metabase_db` table.
 
@@ -10,7 +10,7 @@ To understand how permision works, you can read official documentation of Metaba
 
 ## Examples
 
-### List all permissions
+### List permissions
 
 ```sql
 select
@@ -24,7 +24,7 @@ from
   metabase_permission;
 ```
 
-### Display group name with permission
+### List groups with permission
 
 ```sql
 select
@@ -37,7 +37,7 @@ select
   data_schema
 from
   metabase_permission
-inner join metabase_permission_group ON metabase_permission_group.id = metabase_permission.group_id
+inner join metabase_permission_group on metabase_permission_group.id = metabase_permission.group_id
 order by
   group_id;
 ```

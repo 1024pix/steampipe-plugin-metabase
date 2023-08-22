@@ -8,7 +8,7 @@ No field required.
 
 ## Examples
 
-### List all databases
+### List databases
 
 ```sql
 select
@@ -42,7 +42,7 @@ where
   name = 'Test';
 ```
 
-### List all database use PostgreSQL
+### List databases use PostgreSQL
 
 ```sql
 select
@@ -50,10 +50,10 @@ select
 from
   metabase_db
 where
-   engine = 'postgres';
+  engine = 'postgres';
 ```
 
-### List all databases are not fully synchronized after a Metabase crash
+### List databases are not fully synchronized after a Metabase crash
 
 ```sql
 select
@@ -62,10 +62,10 @@ select
 from
   metabase_db
 where
-   is_full_sync = false;
+  is_full_sync = false;
 ```
 
-### Ensure no database can be use with native SQL
+### List databases that allow run native SQL queries
 
 For this, we list all database with `native_permissions` set `write`:
 ```sql
@@ -74,5 +74,5 @@ select
 from
   metabase_db
 where
-   native_permissions = 'write';
+  native_permissions = 'write';
 ```

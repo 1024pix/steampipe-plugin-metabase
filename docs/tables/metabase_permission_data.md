@@ -14,7 +14,7 @@ No field required.
 
 ## Examples
 
-### List all permissions
+### List permissions
 
 ```sql
 select
@@ -27,7 +27,7 @@ from
   metabase_permission_data;
 ```
 
-### Seach all group in Metabase that have all level access on database that have 'Granular access'
+### List groups in Metabase that have all level access on database that have 'Granular access'
 
 ```sql
 with group_with_all_level_access as (
@@ -50,10 +50,10 @@ select
 from
   metabase_db_table
 inner join
-  group_with_all_level_access ON metabase_db_table.db_id = group_with_all_level_access.db_id AND metabase_db_table.id = group_with_all_level_access.table_id
+  group_with_all_level_access on metabase_db_table.db_id = group_with_all_level_access.db_id and metabase_db_table.id = group_with_all_level_access.table_id
 inner join
-  metabase_permission_group ON metabase_permission_group.id = group_with_all_level_access.group_id
+  metabase_permission_group on metabase_permission_group.id = group_with_all_level_access.group_id
 inner join
-  metabase_db ON metabase_db.id = group_with_all_level_access.db_id
+  metabase_db on metabase_db.id = group_with_all_level_access.db_id
 ```
 

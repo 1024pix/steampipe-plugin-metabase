@@ -87,14 +87,14 @@ connection "metabase" {
 Alternatively, you can also use the standard Metabase environment variables to obtain credentials **only if other arguments (`token` or `user`/`password`) are not specified** in the connection:
 
 ```sh
-export METABasE_TOKEN=33d0d62a-6a16-3083-ba7b-3bab31bd6612
+export METABASE_TOKEN=33d0d62a-6a16-3083-ba7b-3bab31bd6612
 ```
 
 or
 
 ```sh
-export METABasE_USER=my-user
-export METABasE_PasSWORD=my-password
+export METABASE_USER=my-user
+export METABASE_PASSWORD=my-password
 ```
 
 ## Get involved

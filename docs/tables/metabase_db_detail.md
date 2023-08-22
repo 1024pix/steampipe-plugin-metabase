@@ -8,7 +8,7 @@ You must provide `db_id`. `db_id` is the database id from `metabase_db` table.
 
 ## Examples
 
-### Get all details about one database
+### Get details about one database
 
 In case of we use PostgreSQL database, we want kown all list of features are activated on this PostgreSQL database.
 

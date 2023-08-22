@@ -6,7 +6,7 @@ You must provide `db_id`. `db_id` is the database id from `metabase_db` table.
 
 ## Examples
 
-### List all tables of one database
+### List tables of one database
 
 ```sql
 with my_db as (
@@ -36,7 +36,7 @@ where
   db_id = my_db.id;
 ```
 
-### Search table with special warning
+### List tables with special warning
 
 ```sql
 with my_db as (
@@ -56,8 +56,8 @@ from
   metabase_db_table,
   my_db
 where
-  db_id = my_db.my_db_id AND
-  caveats IS NOT NULL;
+  db_id = my_db.my_db_id and
+  caveats is not null;
 ```
 
 ### Get one table of database
@@ -75,7 +75,7 @@ where
   db_id = 15 and id = 209;
 ```
 
-### List all tables show in getting started
+### List tables show in getting started
 
 ```sql
 select
@@ -85,9 +85,9 @@ select
 from
   metabase_db_table
 inner join
-  metabase_db ON metabase_db_table.db_id = metabase_db.id
+  metabase_db on metabase_db_table.db_id = metabase_db.id
 where 
   metabase_db_table.show_in_getting_started = true
 order by
-  db_id asC, table_id asC;
+  db_id asc, table_id asc;
 ```

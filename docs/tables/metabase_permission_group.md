@@ -28,7 +28,7 @@ where
   id = 15;
 ```
 
-### Search group that can download all data and display name of database and group name
+### List groups that can download all data and display name of database and group name
 
 ```sql
 with group_with_download_full as (
@@ -47,8 +47,8 @@ select
   metabase_db.name as db_name
 from 
   metabase_permission_group
-inner join group_with_download_full ON group_with_download_full.group_id = metabase_permission_group.id
-inner join metabase_db ON metabase_db.id = group_with_download_full.db_id
+inner join group_with_download_full on group_with_download_full.group_id = metabase_permission_group.id
+inner join metabase_db on metabase_db.id = group_with_download_full.db_id
 order by
   group_id
 ```
