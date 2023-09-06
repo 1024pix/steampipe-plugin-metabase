@@ -1,3 +1,13 @@
+## v0.0.2 [2023-09-06]
+
+_What's new?_
+
+- Plugin documentation and code now follow Steampipe plugin development standards
+
+_Dependencies_
+
+- Upgrade grokify/goauth to v0.20.2 (#11)
+
 ## v0.0.1 [2023-08-14]
 
 _What's new?_
