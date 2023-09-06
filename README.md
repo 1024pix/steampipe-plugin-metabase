@@ -19,29 +19,34 @@ Download and install the latest Metabase plugin:
 steampipe plugin install 1024pix/metabase
 ```
 
-Configure your [credentials](https://hub.steampipe.io/plugins/1024pix/metabase#credentials) and [config file](https://hub.steampipe.io/plugins/1024pix/metabase#configuration).
+Metabase requires a [token](https://www.metabase.com/learn/administration/metabase-api#authenticate-your-requests-with-a-session-token) or a login username and password.
 
 Configure your account details in `~/.steampipe/config/metabase.spc`:
 
 ```hcl
 connection "metabase" {
-  plugin          = "1024pix/metabase"
+   plugin = "1024pix/metabase"
 
-  url             = "https://localhost"
+   # Authentication information
+   url = "https://localhost"
 
-  # Authentication information
-  user            = "janedoe"
-  password        = "my_password"
+   # Username/password is required for requests. Required except if token (see after) is provided.
+   user = "my_user"
+   password = "my_password"
 
-  tls_skip_verify = true
+   # Token is required for requests. Required except if user/password (see before) is provided.
+   token = "33d0d62a-6a16-3083-ba7b-3bab31bd6612"
+
+   # Skip TLS verification, useful in local test. Optional.
+   tls_skip_verify = false
 }
 ```
 
 Or through environment variables:
 
 ```sh
-export METABASE_USER="janedoe"
-export METABASE_PASSWORD="my_password"
+export METABASE_USER=janedoe
+export METABASE_PASSWORD=my_password
 ```
 
 Run steampipe:
@@ -53,10 +58,10 @@ steampipe query
 List database in your Metabase instance:
 
 ```sql
-SELECT
+select
   id,
   name
-FROM
+from
   metabase_db;
 ```
 

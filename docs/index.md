@@ -19,11 +19,11 @@ icon_url: "/images/plugins/francois2metz/metabase.svg"
 List database in your Metabase instance:
 
 ```sql
-SELECT
+select
   name,
   description,
   id
-FROM
+from
   metabase_db;
 ```
 
@@ -65,7 +65,7 @@ Installing the latest metabase plugin will create a config file (`~/.steampipe/c
 connection "metabase" {
     plugin = "1024pix/metabase"
 
-    # Your metabase url (requiried)
+    # Your metabase url (required)
     # url = "https://localhost"
 
     # Username/password is required for requests. Required except if token (see after) is provided.
@@ -75,7 +75,7 @@ connection "metabase" {
 
     # Token is required for requests. Required except if user/password (see before) is provided.
     # This can also be set via the `METABASE_TOKEN` environment variable.
-    # token = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    # token = "33d0d62a-6a16-3083-ba7b-3bab31bd6612"
 
     # Skip TLS verification, useful in local test. Optionnal.
     # tls_skip_verify = false
@@ -87,14 +87,14 @@ connection "metabase" {
 Alternatively, you can also use the standard Metabase environment variables to obtain credentials **only if other arguments (`token` or `user`/`password`) are not specified** in the connection:
 
 ```sh
-export METABASE_TOKEN="33d0d62a-6a16-3083-ba7b-3bab31bd6612"
+export METABASE_TOKEN=33d0d62a-6a16-3083-ba7b-3bab31bd6612
 ```
 
 or
 
 ```sh
-export METABASE_USER="my-user"
-export METABASE_PASSWORD="my-password"
+export METABASE_USER=my-user
+export METABASE_PASSWORD=my-password
 ```
 
 ## Get involved

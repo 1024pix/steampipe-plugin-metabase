@@ -19,18 +19,18 @@ const (
 )
 
 var SubPermissionColum = []*plugin.Column{
-	{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 	{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
-	{Name: "schema_name", Type: proto.ColumnType_STRING, Transform: transform.FromField("SchemaName"), Description: "Name of schema."},
-	{Name: "table_id", Type: proto.ColumnType_INT, Transform: transform.FromField("TableId"), Description: "Table id."},
+	{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 	{Name: "level_access", Type: proto.ColumnType_STRING, Transform: transform.FromField("LevelAccess"), Description: "Level access of table."},
+	{Name: "schema_name", Type: proto.ColumnType_STRING, Transform: transform.FromField("SchemaName"), Description: "Name of schema."},
+	{Name: "table_id", Type: proto.ColumnType_INT, Description: "Table ID."},
 }
 
 type PermissionSchema struct {
 	GroupID     int
 	DbId        int
 	SchemaName  string
-	TableId     int
+	TableID     int
 	LevelAccess string
 }
 
@@ -203,7 +203,7 @@ func extractGranularPermissions(methodCallStack string, ctx context.Context, gro
 				GroupID:     groupId,
 				DbId:        dbId,
 				SchemaName:  schemaName,
-				TableId:     tId,
+				TableID:     tId,
 				LevelAccess: la,
 			})
 		}

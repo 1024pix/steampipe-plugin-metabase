@@ -22,8 +22,8 @@ func tableMetabaseGroup() *plugin.Table {
 		Columns: []*plugin.Column{
 			// Key column cannot be a pointer. Transform helps us to manage them
 			{Name: "id", Type: proto.ColumnType_INT, Transform: transform.FromField("Id"), Description: "ID of the group."},
-			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the group."},
 			{Name: "member_count", Type: proto.ColumnType_STRING, Description: "Number of members."},
+			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the group."},
 		},
 	}
 }
