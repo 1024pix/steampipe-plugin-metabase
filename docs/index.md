@@ -6,8 +6,8 @@ display_name: "Metabase"
 short_name: "metabase"
 description: "Steampipe plugin for querying Metabase."
 og_description: "Query Metabase with SQL! Open source CLI. No DB required."
-og_image: "/images/plugins/francois2metz/metabase-social-graphic.png"
-icon_url: "/images/plugins/francois2metz/metabase.svg"
+og_image: "/images/plugins/1024pix/metabase-social-graphic.png"
+icon_url: "/images/plugins/1024pix/metabase.svg"
 ---
 
 # Metabase + Steampipe
