@@ -1,3 +1,9 @@
+## v0.1.0 [2023-10-15]
+
+_What's new?_
+
+- Update steampipe sdk to v5.6.2
+
 ## v0.0.2 [2023-09-06]
 
 _What's new?_
