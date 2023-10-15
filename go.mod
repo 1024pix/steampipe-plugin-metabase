@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/1024pix/go-metabase v1.1.0
 	github.com/grokify/goauth v0.20.2
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.0
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
 )
 
 require (
