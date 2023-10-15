@@ -1,6 +1,6 @@
 module github.com/1024pix/steampipe-plugin-metabase
 
-go 1.19
+go 1.21
 
 require (
 	github.com/1024pix/go-metabase v1.1.0
