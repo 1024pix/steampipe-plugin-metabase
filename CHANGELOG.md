@@ -1,3 +1,9 @@
+## v0.1.1 [2023-10-15]
+
+_What's new?_
+
+- Fix path to og_image and icon_url in the doc
+
 ## v0.1.0 [2023-10-15]
 
 _What's new?_
