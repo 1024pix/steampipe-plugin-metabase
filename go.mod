@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/1024pix/go-metabase v1.1.0
 	github.com/grokify/goauth v0.20.5
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.3
 )
 
 require (
@@ -32,6 +32,9 @@ require (
 	github.com/dgraph-io/ristretto v0.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect
+	github.com/eko/gocache/lib/v4 v4.1.5 // indirect
+	github.com/eko/gocache/store/bigcache/v4 v4.2.1 // indirect
+	github.com/eko/gocache/store/ristretto/v4 v4.2.1 // indirect
 	github.com/eko/gocache/v3 v3.1.2 // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -43,6 +46,7 @@ require (
 	github.com/golang-jwt/jwt/v5 v5.1.0 // indirect
 	github.com/golang/glog v1.1.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
+	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
