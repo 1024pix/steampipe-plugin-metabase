@@ -2,7 +2,7 @@
 
 # Metabase Plugin for Steampipe
 
-Use SQL to query models, completions and more from Metabase.
+Use SQL to query databases, tables, permissions and more from Metabase.
 
 - **[Get started →](https://hub.steampipe.io/plugins/1024pix/metabase)**
 - Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/1024pix/metabase/tables)
