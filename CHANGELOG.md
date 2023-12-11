@@ -1,3 +1,10 @@
+## v0.1.2 [2023-12-11]
+
+_What's new?_
+
+- Update steampipe sdk to v5.7.0
+- Switch to ghcr.io in the documentation
+
 ## v0.1.1 [2023-10-15]
 
 _What's new?_
