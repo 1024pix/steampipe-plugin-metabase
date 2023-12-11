@@ -16,7 +16,7 @@ Use SQL to query models, completions and more from Metabase.
 Download and install the latest Metabase plugin:
 
 ```bash
-steampipe plugin install 1024pix/metabase
+steampipe plugin install ghcr.io/1024pix/metabase
 ```
 
 Metabase requires a [token](https://www.metabase.com/learn/administration/metabase-api#authenticate-your-requests-with-a-session-token) or a login username and password.
@@ -25,7 +25,7 @@ Configure your account details in `~/.steampipe/config/metabase.spc`:
 
 ```hcl
 connection "metabase" {
-    plugin = "1024pix/metabase"
+    plugin = "ghcr.io/1024pix/metabase"
 
     # Your metabase url (required)
     # url = "https://localhost"

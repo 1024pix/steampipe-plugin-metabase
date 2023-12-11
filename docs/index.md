@@ -47,7 +47,7 @@ from
 Download and install the latest Metabase plugin:
 
 ```bash
-steampipe plugin install 1024pix/metabase
+steampipe plugin install ghcr.io/1024pix/metabase
 ```
 
 ### Credentials
@@ -63,7 +63,7 @@ Installing the latest metabase plugin will create a config file (`~/.steampipe/c
 
 ```hcl
 connection "metabase" {
-    plugin = "1024pix/metabase"
+    plugin = "ghcr.io/1024pix/metabase"
 
     # Your metabase url (required)
     # url = "https://localhost"

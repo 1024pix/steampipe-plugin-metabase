@@ -1,5 +1,5 @@
 connection "metabase" {
-    plugin = "1024pix/metabase"
+    plugin = "ghcr.io/1024pix/metabase"
 
     # Your metabase url (required)
     # url = "https://localhost"
