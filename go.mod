@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/1024pix/go-metabase v1.1.0
-	github.com/grokify/goauth v0.20.6
+	github.com/grokify/goauth v0.20.7
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.7.0
 )
 
@@ -55,8 +55,8 @@ require (
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.0 // indirect
 	github.com/grokify/base36 v1.0.5 // indirect
-	github.com/grokify/gocharts/v2 v2.16.0 // indirect
-	github.com/grokify/mogo v0.62.2 // indirect
+	github.com/grokify/gocharts/v2 v2.16.1 // indirect
+	github.com/grokify/mogo v0.62.3 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-getter v1.7.2 // indirect

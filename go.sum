@@ -492,6 +492,8 @@ github.com/grokify/goauth v0.20.5 h1:FdRqEed79aqcY8WnDxU/CFkyNXZeh5OLpmizJOXACzc
 github.com/grokify/goauth v0.20.5/go.mod h1:OyE9OcziCun0dDW1XAMfuAs82pAAr3pCSS2ChOvv+hw=
 github.com/grokify/goauth v0.20.6 h1:DDDnzVG7io7yzU6jBiws1bOMMnbqpRQHQ+56hFgrINk=
 github.com/grokify/goauth v0.20.6/go.mod h1:hYa+8wDQY4dOnUgXSh0KMWn6lCbsLg5gSkQJHGHmmz0=
+github.com/grokify/goauth v0.20.7 h1:qune7kHuyD3R+oXr1mThsZM/A/75kvcHhbiXxFhTX20=
+github.com/grokify/goauth v0.20.7/go.mod h1:ZAb4gkvdgubo/FnjcGGpOpgLogymrJ0eoYvZhhRB24M=
 github.com/grokify/gocharts/v2 v2.12.0 h1:5nORWGrvaJ82QS2ZTsB5ynv3zwmnvegJi+ENn9QmwaY=
 github.com/grokify/gocharts/v2 v2.12.0/go.mod h1:Q8LwaCZhws7vy5oVUQBfjyn0OhpfnN2T51B7OE9CP/c=
 github.com/grokify/gocharts/v2 v2.13.0 h1:wJV+pkDmxTLytpaePYSONiRGZZPJn8zKsJRd3Z/H8ds=
@@ -500,6 +502,8 @@ github.com/grokify/gocharts/v2 v2.15.2 h1:L8Aw0+pMgqxM6RnZbl01bocxoGPqshVu5rjaAq
 github.com/grokify/gocharts/v2 v2.15.2/go.mod h1:MZyA5pw1DEA4AaOAVEJUQ7ubFS3MsscBS3fX4wY209o=
 github.com/grokify/gocharts/v2 v2.16.0 h1:dYbf/ZHBGVfmodUG+w1inj0LSiNwKOkVvSDGDEu6WOE=
 github.com/grokify/gocharts/v2 v2.16.0/go.mod h1:3bQj6rFR/HMbe0LExBEUwDQsesJW66q4yAWSALHY75g=
+github.com/grokify/gocharts/v2 v2.16.1 h1:bhf5IiM9gbM8QGgm1iHokJro+VIlICbJbQr5f922YDQ=
+github.com/grokify/gocharts/v2 v2.16.1/go.mod h1:LehLYrHxmnlqtTcNKio85aH38R3fItawopffWgNbwhU=
 github.com/grokify/mogo v0.55.0 h1:lvwsf5VWPvaDNDGqN5rXBCO5m6McyGG8N+PDlpkGMG0=
 github.com/grokify/mogo v0.55.0/go.mod h1:i2ceac5ouNA4/1+TaS+K9/mG1rW2J22KR6r90pQUYE8=
 github.com/grokify/mogo v0.57.0 h1:rQ9J40eFdKtw6uO3Zo6Fcgw3Ep5pYIaOJDpbzhd4DDE=
@@ -508,6 +512,8 @@ github.com/grokify/mogo v0.61.0 h1:kTlz/80ux4OeI8xvOHyec0PWLSLKBTT523s5n/AcopE=
 github.com/grokify/mogo v0.61.0/go.mod h1:22q+ffdRQN4dIywkTBnDEqMzaoOT90zcd+MRQnvddLw=
 github.com/grokify/mogo v0.62.2 h1:Q2SNBqIw3TKdGv4qWR031Ad7ap5UAHC56j7gvwTE3w0=
 github.com/grokify/mogo v0.62.2/go.mod h1:IAvFJFUj303UHU0Y6XduAelcTTDYxvrZG25ycuABDSc=
+github.com/grokify/mogo v0.62.3 h1:m5k7RvXoiErR+CJGNvjSD5IjIWh9R8aZq/AgBy4wUC4=
+github.com/grokify/mogo v0.62.3/go.mod h1:IAvFJFUj303UHU0Y6XduAelcTTDYxvrZG25ycuABDSc=
 github.com/grpc-ecosystem/grpc-gateway v1.16.0/go.mod h1:BDjrQk3hbvj6Nolgz8mAMFbcEtjT1g+wF4CSlocrBnw=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0 h1:YBftPWNWd4WwGqtY2yeZL2ef8rHAxPBD8KFhJpmcqms=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0/go.mod h1:YN5jB8ie0yfIUg6VvR9Kz84aCaG7AsGZnLjhHbUqwPg=
