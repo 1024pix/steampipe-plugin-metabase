@@ -12,12 +12,10 @@ import (
 )
 
 type Permission struct {
-	GroupID        int
-	DbId           int
-	DownloadNative *string
-	DownloadSchema *string
-	DataNative     *string
-	DataSchema     *string
+	GroupID       int
+	DbId          int
+	ViewData      *string
+	CreateQueries *string
 }
 
 func tableMetabasePermission() *plugin.Table {
@@ -28,12 +26,10 @@ func tableMetabasePermission() *plugin.Table {
 			Hydrate: listPermissions,
 		},
 		Columns: []*plugin.Column{
-			{Name: "data_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataNative"), Description: "Type of data."},
-			{Name: "data_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DataSchema"), Description: "Data that you can download."},
 			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
-			{Name: "download_native", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadNative"), Description: "Type of download."},
-			{Name: "download_schema", Type: proto.ColumnType_STRING, Transform: transform.FromField("DownloadSchema"), Description: "Schema that you can download."},
 			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
+			{Name: "view_data", Type: proto.ColumnType_STRING, Transform: transform.FromField("ViewData"), Description: "Permission that determines what data people can see."},
+			{Name: "create_queries", Type: proto.ColumnType_STRING, Transform: transform.FromField("CreateQueries"), Description: "Permission that specifies whether people can create new questions."},
 		},
 	}
 }
@@ -98,48 +94,14 @@ func createPermission(methodCallStack string, ctx context.Context, groups *map[s
 				return nil, err
 			}
 
-			downloadNative, downloadSchema := extractNativeAndSchemas(data.Download)
-			dataNative, dataSchema := extractNativeAndSchemas(data.Data)
-
 			permissions = append(permissions, Permission{
-				GroupID:        gId,
-				DbId:           dId,
-				DownloadNative: downloadNative,
-				DownloadSchema: downloadSchema,
-				DataNative:     dataNative,
-				DataSchema:     dataSchema,
+				GroupID:       gId,
+				DbId:          dId,
+				ViewData:      data.ViewData,
+				CreateQueries: data.CreateQueries,
 			})
 		}
 	}
 
 	return permissions, nil
-}
-
-func extractNativeAndSchemas(data map[string]interface{}) (*string, *string) {
-	var (
-		native *string
-		schema *string
-	)
-
-	dn, ok := data["native"]
-
-	if ok {
-		tmp := fmt.Sprint(dn)
-		native = &tmp
-	}
-
-	ds, ok := data["schemas"]
-
-	if ok && ds != nil {
-		switch v := ds.(type) {
-		case string:
-			tmp := fmt.Sprint(v)
-			schema = &tmp
-		default:
-			tmp := "limited"
-			schema = &tmp
-		}
-	}
-
-	return native, schema
 }

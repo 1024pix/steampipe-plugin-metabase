@@ -25,8 +25,6 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"metabase_db_detail":           tableMetabaseDbDetail(),
 			"metabase_permission_group":    tableMetabaseGroup(),
 			"metabase_permission":          tableMetabasePermission(),
-			"metabase_permission_data":     tableMetabasePermissionData(),
-			"metabase_permission_download": tableMetabasePermissionDownload(),
 		},
 	}
 	return p

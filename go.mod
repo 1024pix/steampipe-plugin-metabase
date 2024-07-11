@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.5
 
 require (
-	github.com/1024pix/go-metabase v1.1.0
+	github.com/1024pix/go-metabase v1.2.1
 	github.com/grokify/goauth v0.20.12
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.10.0
 )

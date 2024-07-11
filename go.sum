@@ -215,6 +215,10 @@ cloud.google.com/go/workflows v1.7.0/go.mod h1:JhSrZuVZWuiDfKEFxU0/F1PQjmpnpcoIS
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/1024pix/go-metabase v1.1.0 h1:/L2AkiiokoysY+5CG4ymAt9npino/T5ltlH5cHrxoSQ=
 github.com/1024pix/go-metabase v1.1.0/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
+github.com/1024pix/go-metabase v1.2.0 h1:kLtX1RVss66o4NeYXI6gVEXBnNtl3QbQ+vbrKQRnbvA=
+github.com/1024pix/go-metabase v1.2.0/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
+github.com/1024pix/go-metabase v1.2.1 h1:0qmZdkEwpcElKZ7wmwrENtp2ZV3hlzCabc7yRgzNp1s=
+github.com/1024pix/go-metabase v1.2.1/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
