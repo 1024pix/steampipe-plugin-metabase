@@ -1,3 +1,18 @@
+## v0.1.4 [2024-09-27]
+
+_What's new?_
+
+- Update steampipe-plugin-sdk to v5.10.4
+
+## v0.1.3 [2024-07-11]
+
+_What's new?_
+
+- Upgrade to metabase 50 permission management
+- Update go-metabase to v1.2.1
+- Update steampipe-plugin-sdk to v5.10.0
+- Update grokify/goauth to v0.20.12
+
 ## v0.1.2 [2023-12-11]
 
 _What's new?_
