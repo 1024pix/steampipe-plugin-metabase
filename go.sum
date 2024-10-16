@@ -219,6 +219,10 @@ github.com/1024pix/go-metabase v1.2.0 h1:kLtX1RVss66o4NeYXI6gVEXBnNtl3QbQ+vbrKQR
 github.com/1024pix/go-metabase v1.2.0/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
 github.com/1024pix/go-metabase v1.2.1 h1:0qmZdkEwpcElKZ7wmwrENtp2ZV3hlzCabc7yRgzNp1s=
 github.com/1024pix/go-metabase v1.2.1/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
+github.com/1024pix/go-metabase v1.2.2-0.20241016132446-a8541f68dd3c h1:8xvPOBWmWzBW90uUmzTUxI9TkagUYXRO66qw0wt3Q7Q=
+github.com/1024pix/go-metabase v1.2.2-0.20241016132446-a8541f68dd3c/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
+github.com/1024pix/go-metabase v1.2.2-0.20241016140730-0ae2fe27b22c h1:aE5IMX/5pVtVRRFXq7W3RtQAlZRq5pzE7qEIl/KQI4A=
+github.com/1024pix/go-metabase v1.2.2-0.20241016140730-0ae2fe27b22c/go.mod h1:wBjwHqp2yUhtJgUSWoiNb+oq8n3XIlQIIRpzEvo/yE0=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=

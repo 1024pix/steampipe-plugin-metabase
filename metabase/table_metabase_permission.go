@@ -4,7 +4,9 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"encoding/json"
 
+  go_kit "github.com/turbot/go-kit/types"
 	"github.com/1024pix/go-metabase/metabase"
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
@@ -15,7 +17,7 @@ type Permission struct {
 	GroupID       int
 	DbId          int
 	ViewData      *string
-	CreateQueries *string
+	CreateQueries interface{}
 }
 
 func tableMetabasePermission() *plugin.Table {
@@ -29,7 +31,7 @@ func tableMetabasePermission() *plugin.Table {
 			{Name: "db_id", Type: proto.ColumnType_INT, Transform: transform.FromField("DbId"), Description: "ID of the database."},
 			{Name: "group_id", Type: proto.ColumnType_INT, Description: "ID of the group."},
 			{Name: "view_data", Type: proto.ColumnType_STRING, Transform: transform.FromField("ViewData"), Description: "Permission that determines what data people can see."},
-			{Name: "create_queries", Type: proto.ColumnType_STRING, Transform: transform.FromField("CreateQueries"), Description: "Permission that specifies whether people can create new questions."},
+			{Name: "create_queries", Type: proto.ColumnType_JSON, Transform: transform.FromField("CreateQueries"), Description: "Permission that specifies whether people can create new questions."},
 		},
 	}
 }
@@ -94,11 +96,17 @@ func createPermission(methodCallStack string, ctx context.Context, groups *map[s
 				return nil, err
 			}
 
+			var createQueries interface{}
+			err := json.Unmarshal([]byte(go_kit.SafeString(data.CreateQueries)), &createQueries)
+      if err != nil {
+        return nil, err
+      }
+
 			permissions = append(permissions, Permission{
 				GroupID:       gId,
 				DbId:          dId,
 				ViewData:      data.ViewData,
-				CreateQueries: data.CreateQueries,
+				CreateQueries: createQueries,
 			})
 		}
 	}
