@@ -75,7 +75,7 @@ func createPermission(methodCallStack string, ctx context.Context, groups *map[s
 		gId, errGID := strconv.Atoi(groupId)
 
 		if errGID != nil {
-			err := fmt.Errorf("Group id is not a integer '%s'", groupId)
+			err := fmt.Errorf("group id is not a integer '%s'", groupId)
 			plugin.Logger(ctx).Error(methodCallStack, err)
 			return nil, err
 		}
@@ -89,7 +89,7 @@ func createPermission(methodCallStack string, ctx context.Context, groups *map[s
 			dId, errDID := strconv.Atoi(databaseId)
 
 			if errDID != nil {
-				err := fmt.Errorf("Database id is not a integer '%s'", databaseId)
+				err := fmt.Errorf("database id is not a integer '%s'", databaseId)
 				plugin.Logger(ctx).Error(methodCallStack, err)
 				return nil, err
 			}
