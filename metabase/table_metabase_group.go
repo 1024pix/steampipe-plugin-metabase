@@ -28,6 +28,12 @@ func tableMetabaseGroup() *plugin.Table {
 			{Name: "members", Type: proto.ColumnType_JSON, Hydrate: hydrateGroupMembers, Transform: transform.FromValue(), Description: "List of users in the group."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the group."},
 		},
+		HydrateConfig: []plugin.HydrateConfig{
+			{
+				Func:           hydrateGroupMembers,
+				MaxConcurrency: 20,
+			},
+		},
 	}
 }
 
