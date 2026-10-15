@@ -2,7 +2,7 @@ module github.com/1024pix/steampipe-plugin-metabase
 
 go 1.22.4
 
-toolchain go1.23.1
+toolchain go1.27.2
 
 require (
 	github.com/1024pix/go-metabase v1.2.4
