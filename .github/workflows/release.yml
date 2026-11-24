@@ -10,6 +10,6 @@ jobs:
     name: Build and publish
     runs-on: ubuntu-latest
     steps:
-      - uses: francois2metz/steampipe-plugin-build-push-action@v0
+      - uses: francois2metz/steampipe-plugin-build-push-action@9074e93ba93e04db2b34ba103e426d9635efcc41 # v0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
